@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seohyun Moon - Computational Psychiatry & NeuroAI</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for a modern, unique two-column layout */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+        /* Enable smooth scrolling when navigating via anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f9; /* Slightly darker white background */
+            min-height: 100vh;
+        }
+
+        /* The main layout container uses a grid for desktop */
+        .unique-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            gap: 2rem;
+            /* Ensure a strong stacking context for children */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sidebar for profile and core skills (fixed width on desktop) */
+        .sidebar {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 1rem;
+            padding: 2rem 1.5rem;
+            align-content: start; /* Keep content at the top */
+        }
+
+        /* Main content area (takes up remaining space) */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .content-section {
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border-radius: 1rem;
+        }
+
+        .section-title {
+            color: #1f2937;
+            font-weight: 800;
+            font-size: 1.875rem; /* text-3xl */
+            margin-bottom: 1.5rem;
+            border-bottom: 4px solid #3b82f6; /* Solid, strong blue underline */
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Timeline specific styling (Experience & Education) */
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
+            background: #3b82f6; /* Blue dot */
+            border-radius: 50%;
+            border: 2px solid #e5e7eb;
+            z-index: 10;
+        }
+        .timeline-item:not(:last-child):after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 1rem;
+            bottom: -1rem;
+            width: 2px;
+            background: #e5e7eb; /* Light gray vertical line */
+            z-index: 5;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 9999px; /* Full rounded corners */
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1e40af;
+            background-color: #dbeafe;
+            border: 1px solid #93c5fd; /* Subtle border for definition */
+            text-transform: uppercase;
+        }
+
+        /* Responsive Grid for Desktop */
+        @media (min-width: 1024px) {
+            .unique-layout {
+                grid-template-columns: 300px 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- === TOP NAVIGATION BAR (Sticky Header) === -->
+    <nav class="bg-gray-900 sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo/Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-xl font-extrabold text-white tracking-wider">S. Moon</span>
+                </div>
+                <!-- Navigation Links (Hidden on small screens, shown on sm and up) -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="#experience" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150">Experience</a>
+                    <a href="#publications" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150">Publications</a>
+                    <a href="#projects" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150">Projects</a>
+                    <a href="#education" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150">Education</a>
+                    <a href="#contact" class="text-blue-400 hover:text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium flex items-center transition duration-150">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="unique-layout">
+
+        <!-- === LEFT SIDEBAR (Profile & Skills) - Z-index added to ensure it stays on top === -->
+        <div class="sidebar lg:sticky lg:top-20 h-fit z-30">
+
+            <!-- Profile Info -->
+            <div class="text-center mb-8">
+                <!-- SUGGESTION: Replace the placeholder image below with a professional headshot. -->
+                <img id="profile-picture" src="https://placehold.co/150x150/2563EB/ffffff?text=Professional+Photo+Needed"
+                     onerror="this.onerror=null; this.src='https://placehold.co/150x150/2563EB/ffffff?text=Professional+Photo+Needed';"
+                     alt="Seohyun Moon Profile Picture"
+                     class="w-28 h-28 rounded-full mx-auto object-cover border-4 border-gray-100 shadow-xl mb-4">
+
+                <h1 class="text-3xl font-extrabold text-gray-900 mb-1" id="user-name">Seohyun Moon</h1>
+                <p class="text-md text-blue-600 font-semibold" id="user-title">Computational Psychiatry & NeuroAI Researcher</p>
+
+                <div class="mt-4 border-t border-gray-100 pt-4">
+                    <p class="text-gray-700 text-sm leading-relaxed" id="user-bio">
+                        I reverse-engineer brain-behavior links using neuroimaging data and computational modeling to develop ethical, bias-aware safety protocols for AI.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Skills List (MOVED UP) -->
+            <div class="border-t border-gray-100 pt-4 mb-8">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Core Technical Stack</h3>
+                <div class="space-y-3">
+                    <div>
+                        <h4 class="font-semibold text-sm text-gray-700 mb-1">AI/ML & Modeling</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pytorch</span>
+                            <span class="project-tag">MATLAB</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm text-gray-700 mb-1">Neuroscience & Analysis</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag">fNIRS</span>
+                            <span class="project-tag">fMRI</span>
+                            <span class="project-tag">EEG</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm text-gray-700 mb-1">Tools & Infrastructure</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact & Social (MOVED DOWN) -->
+            <div class="border-t border-gray-100 pt-4">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Connect</h3>
+                <div class="space-y-3 text-sm text-gray-600">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-6.623 5.666v-13.996l6.623 8.33zm11.754 0l6.623-8.33v13.996l-6.623-5.666zm-5.377 3.271l-1.335-1.285-1.335 1.284-5.663-7.927h14.545l-5.672 7.928z"/></svg>
+                        <a href="mailto:msski1999@gmail.com" class="hover:text-blue-600">msski1999@gmail.com</a>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.535-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <a href="https://linkedin.com/in/seohyunmoon-5a9164253" class="hover:text-blue-600">LinkedIn Profile</a>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.086-.743.083-.729.083-.729 1.205.084 1.839 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.085 8.199-11.387 0-6.627-5.373-12-12-12z"/></svg>
+                        <a href="https://github.com/ski1999" class="hover:text-blue-600">GitHub Profile</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- === RIGHT CONTENT AREA (Scrolling Content) === -->
+        <div class="content-area">
+
+            <!-- Experience Section (Timeline Style) -->
+            <section class="content-section" id="experience">
+                <h2 class="section-title">Research & Work Experience</h2>
+
+                <!-- Experience Item 1: Princeton -->
+                <div class="timeline-item">
+                    <div class="font-bold text-gray-900">Research Specialist II</div>
+                    <div class="text-sm text-blue-600 font-medium">Princeton University, Niv Lab (Computational Psychiatry)</div>
+                    <p class="text-xs text-gray-500 mt-1 mb-2">Aug. 2023 - Jan. 2025 | Princeton, NJ, USA</p>
+                    <ul class="list-disc space-y-1 ml-5 text-gray-700 text-sm">
+                        <li><b>Large-Scale Study:</b> Developed and managed a 16-week longitudinal online behavior study (1,500 participants) with automated email and PostgreSQL backend.</li>
+                        <li><b>Collaboration:</b> Supported the <i>LEAP - Multi Channel Psych</i> project (11 institutes) by dockerizing the data pipeline for standardized analysis.</li>
+                        <li>Collected human fMRI dataset</li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item 2: Yonsei -->
+                <div class="timeline-item">
+                    <div class="font-bold text-gray-900">Undergraduate & Graduate Research Assistant</div>
+                    <div class="text-sm text-blue-600 font-medium">Yonsei University, MCML Group (Machine Learning)</div>
+                    <p class="text-xs text-gray-500 mt-1 mb-2">Mar. 2019 - Jul. 2023 | Seoul, Korea</p>
+                    <ul class="list-disc space-y-1 ml-5 text-gray-700 text-sm">
+                        <li>Developed <b>connectivity-based neural data (fNIRS) augmentation</b> methods for improving CNN classification performance.</li>
+                        <li>Adapted a <b>Transformer model (SWIN-based)</b> for classifying well-being states by capturing multiple timescales in fNIRS data.</li>
+                        <li>Contributed to non-verbal emotional interaction system development through EEG signal collection and analysis.</li>
+                        <li>Developed a VR valance/arousal evaluation task in Unity and collected a corresponding fNIRS dataset.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Publications & Patents Section -->
+            <section class="content-section" id="publications">
+                <h2 class="section-title">Publications & Patents</h2>
+
+                <h3 class="text-xl font-bold text-gray-800 mb-4 mt-2">Journal & Conference Publications (2)</h3>
+
+                <!-- Publication Item 1 -->
+                <div class="mb-5 pb-3 border-b border-gray-100">
+                    <h4 class="text-lg font-semibold text-gray-800">Selective maintenance of adverse memories as a mechanism of spontaneous recovery of fear</h4>
+                    <p class="text-gray-700 italic text-sm">I.Berwian, Y.Ren, S.Pisupati, J.Ding, <span class="font-bold">S. Moon</span>, J.Chiu, D.Chandrasekhar and Y.Niv</p>
+                    <p class="text-gray-500 text-xs mt-1">Psy ArXiv, 2025</p>
+                    <div class="mt-2">
+                        <span class="project-tag">RL & Decision Making</span>
+                        <span class="project-tag">Computational Psychiatry</span>
+                        <a href="https://osf.io/preprints/psyarxiv/2kdtf_v1" class="text-blue-600 hover:text-blue-800 font-medium ml-2 text-xs">PDF &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Publication Item 2 -->
+                <div class="mb-5 pb-3 border-b border-gray-100">
+                    <h4 class="text-lg font-semibold text-gray-800">Resting state fNIRS classification using connectivity and convolutional neural networks</h4>
+                    <p class="text-gray-700 italic text-sm"><span class="font-bold">S. Moon</span>, S.-E. Moon, and J.-S. Lee</p>
+                    <p class="text-gray-500 text-xs mt-1">IEEE International Conference on Systems, Man, and Cybernetics (SMC), 2022</p>
+                    <div class="mt-2">
+                        <span class="project-tag">fNIRS</span>
+                        <span class="project-tag">CNN & Augmentation</span>
+                        <a href="https://ieeexplore.ieee.org/abstract/document/9945172" class="text-blue-600 hover:text-blue-800 font-medium ml-2 text-xs">PDF &rarr;</a>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-gray-800 mb-4 mt-2">Poster (2)</h3>
+
+                <!-- Poster Item 1 -->
+                <div class="mb-5 pb-3 border-b border-gray-100">
+                    <h4 class="text-lg font-semibold text-gray-800">Selective maintenance of adverse events suggests an inductive bias in human offline learning</h4>
+                    <p class="text-gray-700 italic text-sm"> I.Berwian, D.Chandrasekhar, S.Pisupati, A.Hennings, J.Ding, <span class="font-bold">S. Moon</span> and Y.Niv </p>
+                    <p class="text-gray-500 text-xs mt-1">Multidisciplinary Conference on Reinforcement Learning and Decision Making (RLDM), 2025,</p>
+                    <div class="mt-2">
+                        <span class="project-tag">RL & Decision Making</span>
+                        <span class="project-tag">Computational Psychiatry</span>
+                        <a href="https://drive.google.com/file/d/1JGbDJbu_6o2ymu2jW-qKliuA7Cr4UEM5/view" class="text-blue-600 hover:text-blue-800 font-medium ml-2 text-xs">PDF &rarr;</a>
+                    </div>
+                </div>
+                <!-- Poster Item 2 -->
+                <div class="mb-5 pb-3 border-b border-gray-100">
+                    <h4 class="text-lg font-semibold text-gray-800">SWIN-based subjective well-being classification using fNIRS</h4>
+                    <p class="text-gray-700 italic text-sm"><span class="font-bold">S. Moon</span> and J.-S. Lee</p>
+                    <p class="text-gray-500 text-xs mt-1"> Princeton Symposium on Biological & Artificial Intelligence, 2023</p>
+                    <div class="mt-2">
+                        <span class="project-tag">fNIRS</span>
+                        <span class="project-tag">Transformer</span>
+                        <a href="https://drive.google.com/file/d/1ug265h3-AeE_YTIhOjreM9AxTLpFFh0Y/view" class="text-blue-600 hover:text-blue-800 font-medium ml-2 text-xs">PDF &rarr;</a>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-4 mt-6">Patents (1)</h3>
+
+                <!-- Patent Item 1 (Placeholder based on connectivity work) -->
+                <div class="mb-5 pb-3 border-b border-gray-100 last:border-b-0">
+                    <h4 class="text-lg font-semibold text-gray-800">Method and Apparatus for Augmenting Brain Signal Data</h4>
+                    <p class="text-gray-700 italic text-sm"><span class="font-bold">S. Moon</span>, J.-S. Lee</p>
+                    <p class="text-gray-500 text-xs mt-1">Registration Number: 1028865910000, Korea Patent Office (KPO), 2023</p>
+                    <div class="mt-2">
+                        <span class="project-tag">Neural Data Augmentation</span>
+                        <span class="project-tag">fNIRS/CNN</span>
+                        <a href="https://doi.org/10.8080/1020230058664" class="text-blue-600 hover:text-blue-800 font-medium ml-2 text-xs">Link &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section (Timeline Style) -->
+            <section class="content-section" id="education">
+                <h2 class="section-title">Education</h2>
+
+                <div class="timeline-item">
+                    <div class="font-bold text-gray-900">Master of Science, Integrated Information Technology</div>
+                    <div class="text-sm text-blue-600 font-medium">Yonsei University, Seoul, Korea</div>
+                    <p class="text-xs text-gray-500 mt-1 mb-2">Mar. 2021 - Feb. 2023 | GPA: 4.12/4.3</p>
+                    <p class="text-sm text-gray-700">Thesis: Resolving data scarcity of brain signal in classification of deep learning</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="font-bold text-gray-900">Bachelor of Science, Integrated Information Technology</div>
+                    <div class="text-sm text-blue-600 font-medium">Yonsei University, Seoul, Korea</div>
+                    <p class="text-xs text-gray-500 mt-1 mb-2">Mar. 2018 - Feb. 2021 (Early Graduation) | GPA: 3.88/4.3</p>
+                </div>
+
+            </section>
+
+            <!-- Honors & Service Section -->
+            <section class="content-section">
+                <h2 class="section-title">Honors & Service</h2>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 border-b pb-2 border-gray-100">Honors and Awards</h3>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li><span class="font-semibold">Integrated Technology Scholarship</span> (Ministry of Science and ICT, Mar. 2018 - Feb. 2021)</li>
+                            <li><span class="font-semibold">Honor Student</span> (Yonsei University, Spring 2018, Fall 2020)</li>
+                            <li><span class="font-semibold">Social Innovation Scholarship</span> (Yonsei University, Spring 2020, Fall 2020)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3 border-b pb-2 border-gray-100">Professional Service</h3>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li><span class="font-semibold">Session Co-Chair, Reviewer</span> (IEEE SMC, 2022) - Human Performance Modeling session.</li>
+                            <li><span class="font-semibold">Reviewer</span> (ICPR, 2022)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- === CONTACT SECTION (Moved inside content-area and removed full-width classes) === -->
+            <section class="content-section" id="contact">
+                <!-- Removed mx-auto from section-title to align with others -->
+                <h2 class="section-title">Contact</h2>
+
+                <div class="max-w-xl mx-auto w-full pt-4">
+                    <p class="text-gray-600 mb-6 text-center">
+                        Actively seeking advanced research or technical roles. Send a message directly using the form below.
+                    </p>
+
+                    <!-- === CONTACT FORM IMPLEMENTATION === -->
+                    <!-- NOTE: You MUST replace 'YOUR_UNIQUE_FORM_ID_HERE' with your actual Formspree endpoint. -->
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID_HERE" method="POST" class="space-y-4 text-left">
+                        <!-- Name Input -->
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                            <input type="text" name="name" id="name" required
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                            <input type="email" name="_replyto" id="email" required
+                                   class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+
+                        <!-- Message Textarea -->
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea name="message" id="message" rows="4" required
+                                      class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center pt-4">
+                            <button type="submit"
+                                    class="inline-flex items-center justify-center px-8 py-3 text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 transition duration-300 shadow-xl hover:shadow-2xl">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <!-- === END CONTACT FORM === -->
+
+                </div>
+            </section>
+        </div>
+
+        <!-- === MINIMAL FOOTER (Copyright only, still spanning two columns) === -->
+        <footer class="lg:col-span-2 lg:col-start-1 text-center pb-4 w-full">
+            <p class="text-sm text-gray-500 mt-6">
+                &copy; <span id="current-year"></span> Seohyun Moon.
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Simple script to allow easy customization
+        document.addEventListener('DOMContentLoaded', () => {
+            const config = {
+                name: "Seohyun Moon",
+                title: "Computational Psychiatry & NeuroAI Researcher",
+                bio: "I reverse-engineer brain-behavior links using neuroimaging data and computational modeling to develop ethical, bias-aware safety protocols for AI.",
+                email: "msski1999@gmail.com",
+                // IMPORTANT: Update this URL with a real, professional headshot.
+                photoUrl: "https://placehold.co/150x150/2563EB/ffffff?text=SM",
+                linkedinUrl: "https://linkedin.com/in/seohyunmoon-5a9164253",
+                githubUrl: "https://github.com/ski1999",
+            };
+
+            // Sidebar updates
+            document.getElementById('user-name').textContent = config.name;
+            document.getElementById('user-title').textContent = config.title;
+            document.getElementById('user-bio').textContent = config.bio;
+            document.getElementById('profile-picture').src = config.photoUrl;
+
+            // Social Links (The new structure uses inline SVGs with links)
+            const links = document.querySelectorAll('.sidebar a');
+            if (links.length >= 3) {
+                 // Note: The form now handles the main contact, but we keep the sidebar links for email/social
+                 links[0].href = `mailto:${config.email}`; // Email
+                 links[1].href = config.linkedinUrl; // LinkedIn
+                 links[2].href = config.githubUrl; // GitHub
+            }
+
+        });
+    </script>
+</body>
+</html>
